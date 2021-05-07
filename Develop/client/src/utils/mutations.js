@@ -10,3 +10,5 @@ mutation loginUser($email: String!, $password: String!) {
   }
 }
 `;
+export const SAVE_BOOK = gql`
+
