@@ -44,9 +44,12 @@ const resolvers = {
         if(context.User) {
             const updateUser = await User.findOneAndUpdate(
                 {_id: context.user._id},
-                {$pull: {savedBooks: { booksId : args.booksId }}}
+                {$pull: {savedBooks: { booksId : args.booksId }}},
+                {new: true} 
             );
+             return updateUser;
         }
+        throw new AuthenticationError("you need to log in dog!")
     },
   },
 };
