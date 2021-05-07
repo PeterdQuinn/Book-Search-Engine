@@ -45,3 +45,9 @@ type Auth {
     user: User
   }
 `;
+
+
+
+
+
+module.exports = typeDefs;
