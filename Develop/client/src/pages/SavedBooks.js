@@ -27,10 +27,12 @@ const SavedBooks = () => {
     }
 
     try {
-      const {data} = await removeBook(bookId, token);
-
+      const {data} = await removeBook({
+        variables: {bookId}
+      });
+      
       if (!response.ok) {
-        throw new Error('something went wrong!');
+        throw new Error('what did you do wrong?!');
       }
 
       const updatedUser = await response.json();
