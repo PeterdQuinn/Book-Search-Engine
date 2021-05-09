@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-  const app = express();
+
   const server = new ApolloServer({
     typeDefs,
     resolvers,
