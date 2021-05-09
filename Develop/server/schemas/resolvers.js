@@ -39,20 +39,25 @@ const resolvers = {
             return update 
         }
         throw new AuthenticationError("you gotta log in dog!")
-    }
-    removeBook: async (parent,args,context) => {
-        if(context.User) {
-            const updateUser = await User.findOneAndUpdate(
-                {_id: context.user._id},
-                {$pull: {savedBooks: { booksId : args.booksId }}},
-                {new: true} 
-            );
-             return updateUser;
-        }
-        throw new AuthenticationError("you need to log in dog!")
     },
-  },
+
+    removeBook: async (parent, args, context) => {
+      if(context.user) {
+      const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { savedBooks: { bookId: args.bookId } } },
+          { new: true }
+      );
+
+      return updatedUser;
+      }
+
+      throw new AuthenticationError('You gotta log in dog!');
+  }
+}
 };
+
+    
 
 
 
